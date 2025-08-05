@@ -21,7 +21,7 @@ def get_proverb_by_id(proverb_id):
 @jwt_required()
 def delete_proverb_by_id(proverb_id):
     result = proverbs_controller.deleteProverbById(proverb_id)
-    if result > 0:
+    if result is not None and result > 0:
         return jsonify({
             "status": "success",
             "message": f"Proverb {proverb_id} deleted"
@@ -64,8 +64,14 @@ def add_proverb():
             "error": "Missing proverb or author."
         }), 400
 
-    proverbs_controller.addProverb(proverb, author)
+    result = proverbs_controller.addProverb(proverb, author)
+    if result is not None and result > 0:
+        return jsonify({
+            "status": "success",
+            "message": "Proverb added"
+        }), 201
+
     return jsonify({
-        "status": "success",
-        "message": "Proverb added"
-    }), 201
+        "status": "failed",
+        "error": f"No proverb was added"
+    }), 422

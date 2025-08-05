@@ -14,4 +14,4 @@ class ProverbsController:
         return self.db.query("SELECT * FROM proverbs ORDER BY RANDOM() LIMIT 1")
 
     def addProverb(self, proverb: str, author: str):
-        return self.db.query("INSERT INTO proverbs (texte, auteur) VALUES (%s, %s)", [proverb, author])
+        return self.db.query("INSERT INTO proverbs (proverb, author) VALUES (%s, %s)", [proverb, author])
