@@ -1,4 +1,4 @@
-from models.Database import Database
+from api.v1.models.Database import Database
 
 class AuthController:
     def __init__(self):

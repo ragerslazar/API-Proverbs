@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 class Database:
     def __init__(self):
         BASEDIR = os.path.abspath(os.path.dirname(__file__))
-        load_dotenv(os.path.join(BASEDIR, '../.env'))
+        load_dotenv(os.path.join(BASEDIR, '../../../.env'))
 
         self.dsn = os.getenv("DSN")
         self.login = os.getenv("DB_LOGIN")

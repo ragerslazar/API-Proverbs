@@ -1,7 +1,6 @@
 from flask import Blueprint, jsonify, request, current_app
 from flask_jwt_extended import create_access_token
-from controllers.AuthController import AuthController
-
+from api.v1.controllers.AuthController import AuthController
 
 routes_auth = Blueprint("routes_auth", __name__)
 
@@ -11,7 +10,7 @@ auth_controller = AuthController()
 def login():
     data = request.get_json()
 
-    if not data or data is None:
+    if not data:
         return jsonify({"error": "Bad request."}), 400
 
     username = data.get("username")

@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
 
-from controllers.ProverbsController import ProverbsController
+from api.v1.controllers.ProverbsController import ProverbsController
 
 routes_proverbs = Blueprint("routes_proverbs", __name__)
 proverbs_controller = ProverbsController()
